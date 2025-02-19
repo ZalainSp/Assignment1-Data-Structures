@@ -8,7 +8,13 @@ TaskList::TaskList() {
 }
 
 TaskList::~TaskList() {
-    // TODO: Implement destructor
+    // Implementing the destructor 
+    Task *current = head;
+    while(head!=nullptr){
+        Task *next = current->getNext(); //get the next task
+        delete current; //delete the task
+        current = next; // move to the next task
+    }
 }
 
 void TaskList::addTask(string description, string priority, string dueDate) {
