@@ -39,6 +39,40 @@ count++; //increment the amount of tasks
 
 void TaskList::removeTask(string description) {
     //Implementing removeTask
+    (head == nullptr) {
+        return nullptr; // Early exit if the list is empty
+    }
+
+    Task *current = head;
+    Task *previous = nullptr;
+
+    
+
+    while(current ->getDescription() !=description && current != nullptr) //loop to search for task and make sure the search 
+    {                                                                     //doesnt go past the end of list
+    previous = current;
+    current = current ->getNext();
+    }
+
+    if(current == nullptr){ //if statement if the task is not found
+        cout<<"Unable to find task"; 
+        return;
+    }
+
+    if (previous == nullptr) {      
+        head = current->getNext(); //set head to the next node, deleting it
+    } else {
+        previous->setNext(current->getNext()); //set the previous node next pointer to the current nodes next poitner
+    }
+
+    if (current == tail) { //set tail to the previous node after removing the task
+        tail = previous;
+    }
+
+    delete current; //free memory
+    current = nullptr; //avoid dangling pointer
+    count--;        //decrement task count
+    cout << "Task removed successfully";
 
 
 }
