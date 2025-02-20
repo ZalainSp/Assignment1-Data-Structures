@@ -38,8 +38,43 @@ int main() {
                 taskList.addTask(description, priority, dueDate);
                 break;
             }
-
-            // The rest of the menu implementation here
+            case 2: {
+                cout<< "Enter task you'd like to remove: ";
+                getline(cin, description);
+                taskList.removeTask(description);
+                break;
+            }
+            case 3: {
+                cout<< "Enter task you'd like to mark as complete: ";
+                getline(cin, description);
+                taskList.markTaskComplete(description);
+                break;
+            }
+            case 4: {
+                taskList.displayAllTasks();
+                break;
+            }
+            case 5: {
+                cout<< "Enter desired priority: ";
+                getline(cin, priority);
+                taskList.displayByPriority(priority);
+                break;
+            }
+            case 6: {
+                cout<< "Enter desired task: ";
+                getline(cin, description);
+                taskList.searchTask(description);
+                break;
+            }
+            case 7: {
+                taskList.getTaskCount();
+                break;
+            }
+            default: {
+                cout<<"Please enter a valid choice.";
+                break;
+            }
+            
         }
     }
     return 0;
