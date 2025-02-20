@@ -62,11 +62,12 @@ void TaskList::displayAllTasks() {
         cout<<" Task priotity: "<< current-> getPriority();
         cout<<" Task due date: "<< current -> getDate();
         cout<<" Status: "; 
-        if (current->getIsComplete()) {
+        if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
             cout << "Yes\n";
         } else {
             cout << "No\n";
         }
+        current = current->getNext(); //move to next task
         
     }
     if(current ==nullptr) {
@@ -85,13 +86,13 @@ void TaskList::displayByPriority(string priority) {
             cout<<"Task description: "<< current->getDescription();
         cout<<" Task priotity: "<< current-> getPriority();
         cout<<" Task due date: "<< current -> getDate();
-        cout<<" Status: ";
         cout<<" Status: "; 
-        if (current->getIsComplete()) {
+        if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
             cout << "Yes\n";
         } else {
             cout << "No\n";
         }
+        current = current ->getNext(); //move to next task
         }
         if(current!=priority){
             cout<<"No task with "<<priority<< " was found.";
