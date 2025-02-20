@@ -1,4 +1,6 @@
 #include "taskList.h"
+#include <iostream>
+using namespace std;
 
 // Setup a new TaskList
 TaskList::TaskList() {
@@ -18,7 +20,21 @@ TaskList::~TaskList() {
 }
 
 void TaskList::addTask(string description, string priority, string dueDate) {
-    // TODO: Implement addTask
+    //Implementing addTask
+Task *newTask = new Task(description, priority, dueDate); //create a new task
+Task* existingTask = searchTask(description); //create a existingtask variable 
+if(newTask == existingTask){ //check the list if a task with the same description already exists
+    cout<< description <<" already exists";
+    return;
+}
+
+if(head ==nullptr){
+    head = tail = newTask; //if the list is empty newTask is both the head and the tail
+}else{
+    tail->setNext(newTask); //adds the new task at the end
+    tail = newTask; //the new task is now the tail
+}
+count++; //increment the amount of tasks
 }
 
 void TaskList::removeTask(string description) {
