@@ -57,7 +57,7 @@ void TaskList::markTaskComplete(string description) {
 void TaskList::displayAllTasks() {
     //Implement displayAllTasks
     Task* current = head;
-    while(current !=nullptr){
+    while(current !=nullptr){ //if statement to print task info if current location is not null
         cout<<"Task description: "<< current->getDescription();
         cout<<" Task priotity: "<< current-> getPriority();
         cout<<" Task due date: "<< current -> getDate();
@@ -81,7 +81,7 @@ void TaskList::displayByPriority(string priority) {
     bool search = false;
 
     if(current !=nullptr){
-        if(current == priority){
+        if(current->getPriority() == priority){ //if statement if priority was found, prints all task info
             search = true;
             cout<<"Task description: "<< current->getDescription();
         cout<<" Task priotity: "<< current-> getPriority();
@@ -94,14 +94,36 @@ void TaskList::displayByPriority(string priority) {
         }
         current = current ->getNext(); //move to next task
         }
-        if(current!=priority){
+        if(current!=priority){ //if statement if priority was not found
             cout<<"No task with "<<priority<< " was found.";
         }
     }
 }
 
 Task* TaskList::searchTask(string description)  {
-    // TODO: Implement searchTask
+    //Implementing searchTask
+    if (head == nullptr) { //if the list is empty
+        cout<<"There are no tasks available;"
+        return nullptr; 
+    }
+
+    Task* current = head;
+    while(current!=nullptr){
+        if(current->getDescription() == description){
+            cout<<"Task description: "<< current->getDescription();
+        cout<<" Task priotity: "<< current-> getPriority();
+        cout<<" Task due date: "<< current -> getDate();
+        cout<<" Status: "; 
+        if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
+            cout << "Yes\n";
+        } else {
+            cout << "No\n";
+        }
+        current = current ->getNext(); //move to next task
+    }
+    cout<<"Task not found.";
+    return nullptr;
+}
 }
 
 int TaskList::getTaskCount() {
