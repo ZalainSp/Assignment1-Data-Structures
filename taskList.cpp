@@ -21,7 +21,7 @@ TaskList::~TaskList() {
 
 void TaskList::addTask(string description, string priority, string dueDate) {
     //Implementing addTask
-    if(priority!="High"&&priority!="high"&&priority!="medium"&&priority!="medium"&&priority!="low"&&priority!="Low"){
+    if(priority!="High"&&priority!="high"&&priority!="Medium"&&priority!="medium"&&priority!="low"&&priority!="Low"){
         cout<<"Enter a valid priority."<<'\n';
         return;
     }
@@ -33,7 +33,6 @@ if(existingTask != nullptr){ //check the list if a task with the same descriptio
     newTask = nullptr;
     return;
 }
-
 
 if(head ==nullptr){
     head = tail = newTask; //if the list is empty newTask is both the head and the tail
@@ -51,11 +50,8 @@ void TaskList::removeTask(string description) {
         cout<<"No tasks available."<<'\n';
         return; // Early exit if the list is empty
     }
-
     Task *current = head;
     Task *previous = nullptr;
-
-    
 
     while(current ->getDescription() !=description && current != nullptr) //loop to search for task and make sure the search 
     {                                                                     //doesnt go past the end of list
@@ -82,8 +78,6 @@ void TaskList::removeTask(string description) {
     current = nullptr; //avoid dangling pointer
     count--;        //decrement task count
     cout << "Task removed successfully"<<'\n';
-
-
 }
 
 void TaskList::markTaskComplete(string description) {
