@@ -21,6 +21,10 @@ TaskList::~TaskList() {
 
 void TaskList::addTask(string description, string priority, string dueDate) {
     //Implementing addTask
+    if(priority!="High"&&priority!="high"&&priority!="medium"&&priority!="medium"&&priority!="low"&&priority!="Low"){
+        cout<<"Enter a valid priority."<<'\n';
+        return;
+    }
 Task *newTask = new Task(description, priority, dueDate); //create a new task
 Task* existingTask = searchTask(description); //create a existingtask variable 
 if(existingTask != nullptr){ //check the list if a task with the same description already exists
@@ -29,6 +33,7 @@ if(existingTask != nullptr){ //check the list if a task with the same descriptio
     newTask = nullptr;
     return;
 }
+
 
 if(head ==nullptr){
     head = tail = newTask; //if the list is empty newTask is both the head and the tail
@@ -98,6 +103,7 @@ void TaskList::markTaskComplete(string description) {
 void TaskList::displayAllTasks() {
     //Implement displayAllTasks
     if(head == nullptr) {
+        cout<<"No tasks available."<<'\n';
         return; // Early exit if the list is empty
     }
 
@@ -167,5 +173,4 @@ int TaskList::getTaskCount() {
      //Implement getTaskCount
      return count;
      
-
 }
