@@ -38,15 +38,34 @@ count++; //increment the amount of tasks
 }
 
 void TaskList::removeTask(string description) {
-    // TODO: Implement removeTask
+    //Implementing removeTask
+
+
 }
 
 void TaskList::markTaskComplete(string description) {
-    // TODO: Implement markTaskComplete
+    //Implementing markTaskComplete
+    Task* task = searchTask(description);
+    if(task!=complete){
+        task = setIsComplete(true);
+        cout<<"Task marked as complete.";
+    }else{
+        cout<<"Unable to locate task.";
+    }
 }
 
 void TaskList::displayAllTasks() {
-    // TODO: Implement displayAllTasks
+    //Implement displayAllTasks
+    Task* current = head;
+    while(current !=nullptr){
+        cout<<"Task description: "<< current->getDescription()<<'\n';
+        cout<<"Task priotity: "<< current-> getPriority()<<'\n';
+        cout<<"Task due date: "<< current -> getDate()<<"\n"
+        cout<<"Status: "<< current -> isComplete()<<'\n';
+    }
+    if(current ==nullptr) {
+        cout<<"There are currently no tasks to display";
+    }
 }
 
 void TaskList::displayByPriority(string priority) {
@@ -58,6 +77,7 @@ Task* TaskList::searchTask(string description)  {
 }
 
 int TaskList::getTaskCount() {
-     // TODO: Implement getTaskCount
+     //Implement getTaskCount
+     return count; //return the count
 
 }
