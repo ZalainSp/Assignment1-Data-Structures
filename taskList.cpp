@@ -23,8 +23,10 @@ void TaskList::addTask(string description, string priority, string dueDate) {
     //Implementing addTask
 Task *newTask = new Task(description, priority, dueDate); //create a new task
 Task* existingTask = searchTask(description); //create a existingtask variable 
-if(newTask == existingTask){ //check the list if a task with the same description already exists
+if(existingTask != nullptr){ //check the list if a task with the same description already exists
     cout<< description <<" already exists";
+    delete newTask;
+    newTask = nullptr;
     return;
 }
 
@@ -35,12 +37,13 @@ if(head ==nullptr){
     tail = newTask; //the new task is now the tail
 }
 count++; //increment the amount of tasks
+cout<<"Task Added."<<'\n';
 }
 
 void TaskList::removeTask(string description) {
     //Implementing removeTask
     if(head == nullptr) {
-        return nullptr; // Early exit if the list is empty
+        return; // Early exit if the list is empty
     }
 
     Task *current = head;
@@ -72,7 +75,7 @@ void TaskList::removeTask(string description) {
     delete current; //free memory
     current = nullptr; //avoid dangling pointer
     count--;        //decrement task count
-    cout << "Task removed successfully";
+    cout << "Task removed successfully"<<'\n';
 
 
 }
@@ -80,47 +83,45 @@ void TaskList::removeTask(string description) {
 void TaskList::markTaskComplete(string description) {
     //Implementing markTaskComplete
     if(head == nullptr) {
-        return nullptr; // Early exit if the list is empty
+        return; // Early exit if the list is empty
     }
 
     Task* task = searchTask(description);
-    if(task!=complete){ //check if task is complete or not
-        task = setIsComplete(true); //sets task to complete
-        cout<<"Task marked as complete.";
+    if(task!=nullptr){ //check if task is complete or not
+        task -> setIsComplete(true); //sets task to complete
+        cout<<"Task marked as complete."<<'\n';
     }else{
-        cout<<"Unable to locate task.";
+        cout<<"Unable to locate task."<<'\n';
     }
 }
 
 void TaskList::displayAllTasks() {
     //Implement displayAllTasks
     if(head == nullptr) {
-        return nullptr; // Early exit if the list is empty
+        return; // Early exit if the list is empty
     }
 
     Task* current = head;
     while(current !=nullptr){ //if statement to print task info if current location is not null
         cout<<"Task description: "<< current->getDescription();
-        cout<<" Task priotity: "<< current-> getPriority();
-        cout<<" Task due date: "<< current -> getDate();
-        cout<<" Status: "; 
+        cout<<",  Task priotity: "<< current-> getPriority();
+        cout<<",  Task due date: "<< current -> getDueDate();
+        cout<<",  Status: "; 
         if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
-            cout << "Yes\n";
+            cout << "completed\n";
         } else {
-            cout << "No\n";
+            cout << "incomplete\n";
         }
         current = current->getNext(); //move to next task
         
     }
-    if(current ==nullptr) {
-        cout<<"There are currently no tasks to display";
-    }
+    
 }
 
 void TaskList::displayByPriority(string priority) {
     //Implementing displayByPriority
     if(head == nullptr) {
-        return nullptr; // Early exit if the list is empty
+        return; // Early exit if the list is empty
     }
 
     Task* current = head;
@@ -130,17 +131,17 @@ void TaskList::displayByPriority(string priority) {
         if(current->getPriority() == priority){ //if statement if priority was found, prints all task info
             search = true;
             cout<<"Task description: "<< current->getDescription();
-        cout<<" Task priotity: "<< current-> getPriority();
-        cout<<" Task due date: "<< current -> getDate();
-        cout<<" Status: "; 
+        cout<<"  ,Task priotity: "<< current-> getPriority();
+        cout<<"  ,Task due date: "<< current -> getDueDate();
+        cout<<"  ,Status: "; 
         if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
-            cout << "Yes\n";
+            cout << "completed\n";
         } else {
-            cout << "No\n";
+            cout << "incomplete\n";
         }
         current = current ->getNext(); //move to next task
         }
-        if(current!=priority){ //if statement if priority was not found
+        if(!search){ //if statement if priority was not found
             cout<<"No task with "<<priority<< " was found.";
         }
     }
@@ -149,32 +150,22 @@ void TaskList::displayByPriority(string priority) {
 Task* TaskList::searchTask(string description)  {
     //Implementing searchTask
     if (head == nullptr) { //if the list is empty
-        cout<<"There are no tasks available";
         return nullptr; 
     }
 
     Task* current = head;
     while(current!=nullptr){
         if(current->getDescription() == description){
-            cout<<"Task description: "<< current->getDescription();
-        cout<<" Task priotity: "<< current-> getPriority();
-        cout<<" Task due date: "<< current -> getDate();
-        cout<<" Status: "; 
-        if (current->getIsComplete()) { //if statement to print yes or no instead of 1 or 0
-            cout << "Yes\n";
-        } else {
-            cout << "No\n";
-        }
-        current = current ->getNext(); //move to next task
+        return current;
     }
-    cout<<"Task not found.";
-    return nullptr;
+    current = current ->getNext(); //move to next task
 }
+    return nullptr;
 }
 
 int TaskList::getTaskCount() {
      //Implement getTaskCount
-     cout<<"You have: "<<count<<" tasks";
+     return count;
      
 
 }
