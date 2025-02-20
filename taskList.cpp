@@ -46,8 +46,8 @@ void TaskList::removeTask(string description) {
 void TaskList::markTaskComplete(string description) {
     //Implementing markTaskComplete
     Task* task = searchTask(description);
-    if(task!=complete){
-        task = setIsComplete(true);
+    if(task!=complete){ //check if task is complete or not
+        task = setIsComplete(true); //sets task to complete
         cout<<"Task marked as complete.";
     }else{
         cout<<"Unable to locate task.";
@@ -58,10 +58,16 @@ void TaskList::displayAllTasks() {
     //Implement displayAllTasks
     Task* current = head;
     while(current !=nullptr){
-        cout<<"Task description: "<< current->getDescription()<<'\n';
-        cout<<"Task priotity: "<< current-> getPriority()<<'\n';
-        cout<<"Task due date: "<< current -> getDate()<<"\n"
-        cout<<"Status: "<< current -> isComplete()<<'\n';
+        cout<<"Task description: "<< current->getDescription();
+        cout<<" Task priotity: "<< current-> getPriority();
+        cout<<" Task due date: "<< current -> getDate();
+        cout<<" Status: "; 
+        if (current->getIsComplete()) {
+            cout << "Yes\n";
+        } else {
+            cout << "No\n";
+        }
+        
     }
     if(current ==nullptr) {
         cout<<"There are currently no tasks to display";
@@ -69,7 +75,28 @@ void TaskList::displayAllTasks() {
 }
 
 void TaskList::displayByPriority(string priority) {
-    // TODO: Implement displayByPriority
+    //Implementing displayByPriority
+    Task* current = head;
+    bool search = false;
+
+    if(current !=nullptr){
+        if(current == priority){
+            search = true;
+            cout<<"Task description: "<< current->getDescription();
+        cout<<" Task priotity: "<< current-> getPriority();
+        cout<<" Task due date: "<< current -> getDate();
+        cout<<" Status: ";
+        cout<<" Status: "; 
+        if (current->getIsComplete()) {
+            cout << "Yes\n";
+        } else {
+            cout << "No\n";
+        }
+        }
+        if(current!=priority){
+            cout<<"No task with "<<priority<< " was found.";
+        }
+    }
 }
 
 Task* TaskList::searchTask(string description)  {
