@@ -45,6 +45,10 @@ void TaskList::removeTask(string description) {
 
 void TaskList::markTaskComplete(string description) {
     //Implementing markTaskComplete
+    (head == nullptr) {
+        return nullptr; // Early exit if the list is empty
+    }
+
     Task* task = searchTask(description);
     if(task!=complete){ //check if task is complete or not
         task = setIsComplete(true); //sets task to complete
@@ -56,6 +60,10 @@ void TaskList::markTaskComplete(string description) {
 
 void TaskList::displayAllTasks() {
     //Implement displayAllTasks
+    (head == nullptr) {
+        return nullptr; // Early exit if the list is empty
+    }
+
     Task* current = head;
     while(current !=nullptr){ //if statement to print task info if current location is not null
         cout<<"Task description: "<< current->getDescription();
@@ -77,6 +85,10 @@ void TaskList::displayAllTasks() {
 
 void TaskList::displayByPriority(string priority) {
     //Implementing displayByPriority
+    (head == nullptr) {
+        return nullptr; // Early exit if the list is empty
+    }
+
     Task* current = head;
     bool search = false;
 
