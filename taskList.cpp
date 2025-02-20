@@ -39,7 +39,7 @@ count++; //increment the amount of tasks
 
 void TaskList::removeTask(string description) {
     //Implementing removeTask
-    (head == nullptr) {
+    if(head == nullptr) {
         return nullptr; // Early exit if the list is empty
     }
 
@@ -79,7 +79,7 @@ void TaskList::removeTask(string description) {
 
 void TaskList::markTaskComplete(string description) {
     //Implementing markTaskComplete
-    (head == nullptr) {
+    if(head == nullptr) {
         return nullptr; // Early exit if the list is empty
     }
 
@@ -94,7 +94,7 @@ void TaskList::markTaskComplete(string description) {
 
 void TaskList::displayAllTasks() {
     //Implement displayAllTasks
-    (head == nullptr) {
+    if(head == nullptr) {
         return nullptr; // Early exit if the list is empty
     }
 
@@ -119,7 +119,7 @@ void TaskList::displayAllTasks() {
 
 void TaskList::displayByPriority(string priority) {
     //Implementing displayByPriority
-    (head == nullptr) {
+    if(head == nullptr) {
         return nullptr; // Early exit if the list is empty
     }
 
@@ -149,7 +149,7 @@ void TaskList::displayByPriority(string priority) {
 Task* TaskList::searchTask(string description)  {
     //Implementing searchTask
     if (head == nullptr) { //if the list is empty
-        cout<<"There are no tasks available;"
+        cout<<"There are no tasks available";
         return nullptr; 
     }
 
@@ -174,6 +174,7 @@ Task* TaskList::searchTask(string description)  {
 
 int TaskList::getTaskCount() {
      //Implement getTaskCount
-     return count; //return the count
+     cout<<"You have: "<<count<<" tasks";
+     
 
 }
