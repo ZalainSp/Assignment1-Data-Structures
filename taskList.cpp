@@ -48,6 +48,7 @@ cout<<"Task Added."<<'\n';
 void TaskList::removeTask(string description) {
     //Implementing removeTask
     if(head == nullptr) {
+        cout<<"No tasks available."<<'\n';
         return; // Early exit if the list is empty
     }
 
@@ -88,6 +89,7 @@ void TaskList::removeTask(string description) {
 void TaskList::markTaskComplete(string description) {
     //Implementing markTaskComplete
     if(head == nullptr) {
+        cout<<"There are no tasks available"<<"\n";
         return; // Early exit if the list is empty
     }
 
@@ -127,6 +129,7 @@ void TaskList::displayAllTasks() {
 void TaskList::displayByPriority(string priority) {
     //Implementing displayByPriority
     if(head == nullptr) {
+        cout<<"No tasks available."<<'\n';
         return; // Early exit if the list is empty
     }
 
