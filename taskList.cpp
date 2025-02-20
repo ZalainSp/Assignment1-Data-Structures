@@ -21,7 +21,7 @@ TaskList::~TaskList() {
 
 void TaskList::addTask(string description, string priority, string dueDate) {
     //Implementing addTask
-    if(priority!="High"&&priority!="high"&&priority!="medium"&&priority!="medium"&&priority!="low"&&priority!="Low"){
+    if(priority!="High"&&priority!="high"&&priority!="Medium"&&priority!="medium"&&priority!="low"&&priority!="Low"){
         cout<<"Enter a valid priority."<<'\n';
         return;
     }
