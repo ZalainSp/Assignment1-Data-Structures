@@ -1,0 +1,39 @@
+Program Functionality:
+
+-This is a task managing programming that allows users to enter a specific task, it's priority and its due date.
+
+-When executing this code a simple menu driven interface will output, the user will be asked to choose a menu option by entering its corresponding number.
+
+1 -If the user enters 1 it will give them the option to Add new task which ask the user to enter the description of their task, the priority and date. 
+If the user enters an invalid priority it will output an error message and the user has to re-enter the task info.
+
+2 -If the user enters 2 it will give them the option to delete a task by entering the tasks description, if the task doesnt exist it will output an error message.
+
+3 -If the user enters 3 it will give them the option to mark a task as complete, the user had to enter the name of the task and it will automatically mark it as complete,
+if task doesnt exist it will output an error message.
+
+4 -If the user enters 4 it will give them the option to display tasks, it will output all the tasks that were added to the program using the enter task option on the ui
+displaying the:
+-description
+-priority
+-duedate
+-completion status
+
+5 -If the user enters 5 it will give them the option to display the task by priority, this will filter the tasks based on the priority that the user enters
+
+6- If the user enters 6 it will give them the option to search for a specific task just by entering that tasks description and it will provide all the info of that task
+-descrption
+-priority
+-due date
+-competion status
+
+7- If the user enters 7 it will simply exit the program
+
+-by default if the user enters an invalid option that doesn't match the options correspondng number on the ui, it will ask the user to enter a valid option.
+
+________________________________________________________________________________________________________________________________________________________________________________________
+
+Discussed assignment with Jeronimo Tzib
+
+In this assignment I used ChatGPT and DeepSeek AI as tutors to clarify linked list concepts.
+All the implementation and design was done on my own.
